@@ -1,3 +1,10 @@
 theme: jekyll-theme-cayman
-title: DUUI-Logging
+title: DUUI Logging
 description: Structured logging for DUUI Python tool components
+
+github:
+  repository_url: https://github.com/texttechnologylab/DUUIlogger
+  is_project_page: true
+  repository_name: DUUIlogger
+  owner_url: https://github.com/texttechnologylab
+  owner_name: Texttechnology Lab

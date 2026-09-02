@@ -1,0 +1,14 @@
+---
+---
+
+// Brand colors
+// Main: rgb(20, 82, 162)  #1452A2
+// Accent: rgb(243, 192, 57) #F3C039
+
+$header-bg-color: #1452A2;
+$header-bg-color-secondary: #0D3A75;
+$header-heading-color: #F3C039;
+$section-headings-color: #1452A2;
+$body-link-color: #1452A2;
+
+@import "{{ site.theme }}";
