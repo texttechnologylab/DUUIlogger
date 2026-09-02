@@ -1,6 +1,6 @@
-# Duui-Logging
+# DUUI-Logging
 
-Structured logging for **DUUI** Python tool components. It lets a tool emit logs while 
+Structured logging for **Docker Unified UIMA Interface (DUUI)** Python tool components. It lets a tool emit logs while 
 handling a request and have them surfaced on the **Java side** printed to the DUUI console and saved in a connected
 database.
 
