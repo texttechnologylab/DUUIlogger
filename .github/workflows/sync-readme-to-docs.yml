@@ -1,0 +1,36 @@
+name: Sync README to docs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - README.md
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rebuild docs/index.md from README.md
+        run: |
+          {
+            echo "---"
+            echo "layout: default"
+            echo "title: DUUI-Logging"
+            echo "---"
+            echo
+            cat README.md
+          } > docs/index.md
+
+      - name: Commit changes if any
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/index.md
+          git diff --cached --quiet || git commit -m "docs: sync index.md with README.md"
+          git push
