@@ -25,6 +25,7 @@ $hr-border-color: #DCE6F2;
 
 :root {
   --accent: #F3C039;
+  --code-bg: #0D1B2A;
 }
 
 // Header: give the gradient a bit more depth and add an accent hairline
@@ -99,7 +100,7 @@ $hr-border-color: #DCE6F2;
 }
 
 .main-content pre {
-  background-color: #0D1B2A;
+  background-color: var(--code-bg);
   color: #E8EEF7;
   border: none;
   border-radius: 0.5rem;
@@ -115,7 +116,7 @@ $hr-border-color: #DCE6F2;
 // keywords, dark greys) — remap the tokens so they stay legible on our dark code
 // blocks instead of disappearing into the navy background.
 .main-content .highlight {
-  background-color: transparent;
+  background-color: var(--code-bg);
 }
 
 .main-content .highlight .c,
