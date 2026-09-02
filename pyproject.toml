@@ -1,16 +1,31 @@
 [project]
 name = "duui-logging"
 version = "0.1.0"
-description = "LoggingTest library for DUUI Python tool components: emits info/warning/error logs that can be surfaced on the Java side"
+description = "Structured logging for DUUI Python tool components: emits info/warning/error logs that can be surfaced on the Java side"
 readme = "README.md"
+license = "AGPL-3.0-or-later"
+license-files = ["LICENSE"]
 authors = [
-    { name = "Daniel Bundan", email = "bundan@em.uni-frankfur.de" }
+    { name = "Daniel Bundan", email = "bundan@em.uni-frankfur.de" },
+    { name = "Giuseppe Abrami", email = "abrami@em.uni-frankfur.de" }
 ]
 requires-python = ">=3.10"
+keywords = ["duui", "logging", "uima", "docker"]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Framework :: FastAPI",
+    "Topic :: System :: Logging",
+]
 dependencies = [
     "fastapi>=0.141.1",
     "pydantic>=2.13.4",
 ]
+
+[project.urls]
+Homepage = "https://texttechnologylab.github.io/DUUIlogger/"
+Repository = "https://github.com/texttechnologylab/DUUIlogger"
+Documentation = "https://texttechnologylab.github.io/DUUIlogger/"
+Issues = "https://github.com/texttechnologylab/DUUIlogger/issues"
 
 [build-system]
 requires = ["uv_build>=0.12.1,<0.13.0"]
