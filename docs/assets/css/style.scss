@@ -111,6 +111,144 @@ $hr-border-color: #DCE6F2;
   border: 0;
 }
 
+// Rouge's default syntax-highlight colors assume a light background (near-black
+// keywords, dark greys) — remap the tokens so they stay legible on our dark code
+// blocks instead of disappearing into the navy background.
+.main-content .highlight {
+  background-color: transparent;
+}
+
+.main-content .highlight .c,
+.main-content .highlight .cd,
+.main-content .highlight .cm,
+.main-content .highlight .c1,
+.main-content .highlight .cs,
+.main-content .highlight .cp {
+  color: #7C93B3;
+}
+
+.main-content .highlight .s,
+.main-content .highlight .s1,
+.main-content .highlight .s2,
+.main-content .highlight .sb,
+.main-content .highlight .sc,
+.main-content .highlight .sd,
+.main-content .highlight .se,
+.main-content .highlight .sh,
+.main-content .highlight .si,
+.main-content .highlight .sx,
+.main-content .highlight .sr,
+.main-content .highlight .ss {
+  color: var(--accent);
+}
+
+.main-content .highlight .m,
+.main-content .highlight .mb,
+.main-content .highlight .mx,
+.main-content .highlight .mf,
+.main-content .highlight .mh,
+.main-content .highlight .mi,
+.main-content .highlight .mo,
+.main-content .highlight .il {
+  color: #6FD3C7;
+}
+
+.main-content .highlight .k,
+.main-content .highlight .kv,
+.main-content .highlight .kc,
+.main-content .highlight .kd,
+.main-content .highlight .kn,
+.main-content .highlight .kp,
+.main-content .highlight .kr {
+  color: #7FB3F0;
+  font-weight: 600;
+}
+
+.main-content .highlight .o,
+.main-content .highlight .ow {
+  color: #C7D3E0;
+}
+
+.main-content .highlight .nc,
+.main-content .highlight .kt {
+  color: #C9A6F0;
+  font-weight: 600;
+}
+
+.main-content .highlight .nf,
+.main-content .highlight .ne,
+.main-content .highlight .nl {
+  color: #F0A868;
+  font-weight: 600;
+}
+
+.main-content .highlight .nb {
+  color: #7FD1E0;
+}
+
+.main-content .highlight .na,
+.main-content .highlight .no,
+.main-content .highlight .nv,
+.main-content .highlight .vc,
+.main-content .highlight .vg,
+.main-content .highlight .vi {
+  color: #8FD6C4;
+}
+
+.main-content .highlight .nd {
+  color: #8FD6C4;
+  font-weight: 600;
+}
+
+.main-content .highlight .nt {
+  color: #7FB3F0;
+}
+
+.main-content .highlight .nn,
+.main-content .highlight .bp,
+.main-content .highlight .go,
+.main-content .highlight .gp,
+.main-content .highlight .gh,
+.main-content .highlight .gu {
+  color: #93A5BE;
+}
+
+.main-content .highlight .ni {
+  color: #C9A6F0;
+}
+
+.main-content .highlight .w {
+  color: transparent;
+}
+
+.main-content .highlight .err {
+  color: #FF8A8A;
+  background-color: rgba(255, 80, 80, 0.15);
+}
+
+.main-content .highlight .gd {
+  color: #FF9B9B;
+  background-color: rgba(255, 80, 80, 0.12);
+}
+
+.main-content .highlight .gi {
+  color: #9EE6A8;
+  background-color: rgba(90, 200, 120, 0.12);
+}
+
+.main-content .highlight .gr,
+.main-content .highlight .gt {
+  color: #FF9B9B;
+}
+
+.main-content .highlight .ge {
+  font-style: italic;
+}
+
+.main-content .highlight .gs {
+  font-weight: 700;
+}
+
 // Blockquotes pick up the accent color instead of the neutral border
 .main-content blockquote {
   border-left-color: var(--accent);
