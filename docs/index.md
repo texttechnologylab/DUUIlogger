@@ -335,10 +335,11 @@ Daniel Bundan, Giuseppe Abrami (2026). "DUUI Logging". [[LINK](https://github.co
                data.}
 }
 
-@misc{Bundan_2026,
+@misc{Bundan:Abrami:2026,
   title     = {DUUI Logging},
   author    = {Bundan, Daniel and Abrami, Giuseppe},
   year      = {2026},
   month     = {Aug},
   url       = {https://github.com/texttechnologylab/DUUIlogger}
-} 
+}
+```
