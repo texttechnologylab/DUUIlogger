@@ -2,13 +2,148 @@
 ---
 
 // Brand colors
-// Main: rgb(20, 82, 162)  #1452A2
+// Main:   rgb(20, 82, 162)  #1452A2
 // Accent: rgb(243, 192, 57) #F3C039
 
 $header-bg-color: #1452A2;
 $header-bg-color-secondary: #0D3A75;
-$header-heading-color: #F3C039;
+$header-heading-color: #FFFFFF;
 $section-headings-color: #1452A2;
 $body-link-color: #1452A2;
+$code-bg-color: #F0F4FA;
+$code-text-color: #0D3A75;
+$border-color: #DCE6F2;
+$table-border-color: #DCE6F2;
+$blockquote-text-color: #4A5A6A;
+$hr-border-color: #DCE6F2;
 
 @import "{{ site.theme }}";
+
+// ---- Extra polish on top of the theme -------------------------------
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
+
+:root {
+  --accent: #F3C039;
+}
+
+// Header: give the gradient a bit more depth and add an accent hairline
+.page-header {
+  background-image: linear-gradient(135deg, #{$header-bg-color-secondary} 0%, #{$header-bg-color} 55%, #1a5fc0 100%);
+  position: relative;
+  box-shadow: 0 6px 24px rgba(13, 58, 117, 0.35);
+}
+
+.page-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: var(--accent);
+}
+
+.project-name {
+  font-family: "Poppins", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-tagline {
+  color: var(--accent);
+  opacity: 0.95;
+}
+
+// "View on GitHub" style buttons pick up the accent color on hover
+.btn {
+  font-weight: 600;
+  backdrop-filter: blur(2px);
+}
+
+.btn:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent) inset;
+}
+
+// Section headings get a short accent underline
+.main-content h2 {
+  display: inline-block;
+  padding-bottom: 0.3rem;
+  border-bottom: 3px solid var(--accent);
+}
+
+.main-content h3 {
+  color: #0D3A75;
+}
+
+// Links get an accent underline on hover instead of the plain default
+.main-content a {
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0% 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.2s ease, color 0.2s ease;
+}
+
+.main-content a:hover {
+  background-size: 100% 2px;
+}
+
+// Inline code + fenced code blocks: rounded, subtle shadow, dark contrast block
+.main-content code {
+  font-weight: 600;
+  border: 1px solid $border-color;
+}
+
+.main-content pre {
+  background-color: #0D1B2A;
+  color: #E8EEF7;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 20px rgba(13, 27, 42, 0.18);
+}
+
+.main-content pre code {
+  color: inherit;
+  border: 0;
+}
+
+// Blockquotes pick up the accent color instead of the neutral border
+.main-content blockquote {
+  border-left-color: var(--accent);
+  background: #F7FAFD;
+  border-radius: 0 0.3rem 0.3rem 0;
+  padding: 0.6rem 1rem;
+}
+
+// Tables: accent header row, soft zebra striping, rounded container
+.main-content table {
+  border-radius: 0.4rem;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(13, 58, 117, 0.08);
+}
+
+.main-content table th {
+  background-color: #1452A2;
+  color: #FFFFFF;
+}
+
+.main-content table tr:nth-child(even) td {
+  background-color: #F5F8FC;
+}
+
+// Horizontal rules become a soft gradient instead of a flat line
+.main-content hr {
+  height: 3px;
+  background: linear-gradient(90deg, #1452A2, var(--accent));
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+::selection {
+  background: var(--accent);
+  color: #0D1B2A;
+}
