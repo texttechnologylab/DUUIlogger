@@ -137,6 +137,11 @@ def _emit(
     stacktrace: Optional[str] = None
     if withException:
         stacktrace = current_exception_trace()
+        if stacktrace is not None:
+            try:
+                setattr(sys.exc_info()[1], context.EXC_LOGGED_ATTR, True)
+            except (AttributeError, TypeError):
+                pass
     if stacktrace is None and withStacktrace > 0:
         stacktrace = where_am_i(withStacktrace, _skip=1)  # drop the _emit frame
 

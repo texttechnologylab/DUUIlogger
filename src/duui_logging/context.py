@@ -26,6 +26,10 @@ HEADER_LOGS = "duui-logs"                # response: the tool's logs as a JSON a
 # e.g. turn a TRACE into an INFO on the Java side).
 SKIP_COLLECT_ATTR = "_duui_skip_collect"
 
+# Set on an exception object once a ``log_*`` helper has attached its traceback, so the
+# middlewares unhandled exception record doesn't send the same traceback a second time.
+EXC_LOGGED_ATTR = "_duui_traceback_logged"
+
 # None means "not collecting" (no active request or Java didn't ask for logs).
 _buffer: ContextVar[Optional[List[LogRecord]]] = ContextVar("duui_log_buffer", default=None)
 

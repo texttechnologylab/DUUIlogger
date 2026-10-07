@@ -19,6 +19,7 @@ import os
 from typing import Any, Callable, List, Optional
 
 from . import context
+from .duui_logger import log_error
 from .records import LogRecord
 
 # Keep the response header comfortably under common server/client limits.
@@ -57,9 +58,12 @@ class DUUILoggingMiddleware:
 
         token = context.start_buffer()
         max_bytes = self.max_bytes
+        response_started = False
 
         async def send_wrapper(message: dict) -> None:
+            nonlocal response_started
             if message["type"] == "http.response.start":
+                response_started = True
                 buffer = context.get_buffer() or []
                 payload = _encode_logs(buffer, max_bytes)
                 if payload:
@@ -71,6 +75,24 @@ class DUUILoggingMiddleware:
 
         try:
             await self.app(scope, receive, send_wrapper)
+        except Exception as exc:
+            if response_started:
+                raise
+            already_logged = getattr(exc, context.EXC_LOGGED_ATTR, False)
+            log_error(
+                f"Unhandled exception in {scope.get('path', '')}: {type(exc).__name__}: {exc}",
+                withException=not already_logged,
+            )
+            body = f"{type(exc).__name__}: {exc}".encode("utf-8")
+            await send_wrapper({
+                "type": "http.response.start",
+                "status": 500,
+                "headers": [
+                    (b"content-type", b"text/plain; charset=utf-8"),
+                    (b"content-length", str(len(body)).encode("latin-1")),
+                ],
+            })
+            await send_wrapper({"type": "http.response.body", "body": body})
         finally:
             context.reset_buffer(token)
 
